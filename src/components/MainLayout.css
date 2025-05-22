@@ -1,0 +1,207 @@
+* {
+}
+
+/* Left Column */
+
+/* Left: First Section */
+.logoText {
+  font-size: 13px;
+}
+
+.logoTextTagLine{
+  font-size: 12px;
+}
+
+.logoImage {
+  /* position: absolute;  */
+  /* left: 50px;  */
+  width: 50px;
+  height: 50px;
+}
+
+/* Left: Second Section */
+.scoreText {
+  font-size: 20px;
+}
+
+.newGameBtn {
+  font-size: 13px;
+  font-weight: bold;
+  background-color: rgb(255, 183, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+  cursor: pointer !important;
+}
+.newGameBtn:hover {
+  background-color: rgb(231, 169, 11) !important;
+  color: #000 !important;
+}
+
+.newGameBtn:active {
+  background-color: rgb(91, 67, 4) !important;
+  color: #fff !important;
+}
+
+.gameInstructions {
+  font-size: 12px;
+}
+
+.underline {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Left: Third Section */
+.musicPlayer {
+  width: 90%;
+  /* border: 1px solid #000; */
+  padding: 10px;
+}
+.musicText {
+  font-size: 14px;
+}
+.nowPlayingText {
+  font-size: 12px;
+}
+
+.moreControls {
+  margin-right: 20px;
+  /* height: 30px; */
+}
+
+.moreControls button {
+  border: 1px solid #444;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.moreControls button:hover {
+  background-color: #dadada;
+}
+.moreControls button:active {
+  background-color: #a4a4a4;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #9fcbf4;
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: #89a9d6;
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+  background-color: #637fa5;
+}
+
+/* audio::-webkit-media-controls-current-time-display {
+  color: #fff;
+} */
+
+audio::-webkit-media-controls-time-remaining-display {
+  color: #565656;
+}
+
+/* Right Column */
+
+/* Right: First Section */
+
+.connectWalletBtn {
+  background-color: #f2eeee;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 13px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+}
+.connectedAddressText {
+  font-size: 13px;
+}
+
+/* Right: Second Section */
+
+.highestScoresText {
+  font-size: 14px;
+  text-align: center;
+}
+
+.highestScoresList {
+  font-size: 12px;
+}
+
+.logsText{
+  text-align: center;
+  font-size: 14px; 
+}
+
+.logsContainer{
+  background-color: #ffffff; 
+  color: #000; 
+  font-size: 12px; 
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+  padding: 5px; 
+  border: 1px solid #565656; 
+  border-radius: 5px; 
+}
+
+/* Right: Third Section */
+
+.challengesText {
+  font-size: 14px;
+  text-align: center;
+}
+
+.gameChallenges {
+  font-size: 14px;
+}
+.gameChallenges li {
+  font-size: 12px;
+}
+.gameChallenges li:hover {
+  background-color: #f2eeee;
+  cursor: pointer;
+}
+.gameChallenges li:active {
+  background-color: #3b3b3b;
+  color: #fff;
+  cursor: pointer;
+}
+.moneyFlash {
+  color: green;
+  /* color: #fff; */
+  padding: 2px;
+  font-weight: bold;
+}
+.moreChallengesBtn {
+  font-size: 13px;
+  border: 1px solid #000;
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(8, 168, 8);
+  color: #fff;
+}
+
+/* more css */
+.scoreField {
+  color: #ba00f8; 
+  font-weight: bold; 
+}
+.individualContractChallenges {
+  border: 1px solid transparent; 
+}
+.individualContractChallenges:hover {
+  background-color: #ba00f8 !important; 
+  cursor: pointer !important; 
+  color: #fff !important;  
+  /* change scoreField too */
+  .scoreField {
+    color: #fff !important; 
+  }
+}
