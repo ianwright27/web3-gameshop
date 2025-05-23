@@ -31,6 +31,7 @@ const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
                     <th>Creator</th>
                     <th>Score</th>
                     <th>Price</th>
+                    <th>Earn</th>
                     <th>Players</th>
                     <th>Registered</th>
                     <th>Winners</th>
@@ -54,6 +55,7 @@ const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
                       <td>{c.creator}</td>
                       <td className="scoreField">{c.gameMintScore}</td>
                       <td>{c.gameMintPrice}ETH</td>
+                      <td>{(c.gameMintPrice / c.gameMintNumPlayers)}ETH</td>
                       <td>{c.gameMintNumPlayers}</td>
                       <td>{c.registeredPlayers}</td>
                       <td>{c.winners}</td>

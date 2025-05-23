@@ -122,10 +122,16 @@ const MainLayout = () => {
 
         {/* Center Column: Game */}
         <div className="col-6 bg-light d-flex align-items-center justify-content-center">
-          <GamePanel
+          {seed === "0" && (
+            <div>
+              <span>Press "New Game" to play! 🎮</span>
+            </div>
+          )}
+          {seed != "0" && <GamePanel
           seed = {seed} 
           handleScoreUpdate = {handleScoreUpdate}
           />
+          }
         </div>
 
         {/* Right Column: Data & Wallet */}

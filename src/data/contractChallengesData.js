@@ -22,8 +22,8 @@ const contractChallengesData = [
       registeredPlayers: 5,
       winners: 1,
       expiryTime: 1,
-      isSolved: true,
-      notPlayable: false,
+      isSolved: false,
+      notPlayable: true,
     },
     {
       index: 3, 
@@ -35,7 +35,7 @@ const contractChallengesData = [
       registeredPlayers: 10,
       winners: 4,
       expiryTime: 7,
-      isSolved: false,
+      isSolved: true,
       notPlayable: true,
     },
     {
@@ -48,8 +48,8 @@ const contractChallengesData = [
       registeredPlayers: 3,
       winners: 0,
       expiryTime: 5,
-      isSolved: false,
-      notPlayable: false,
+      isSolved: true,
+      notPlayable: true,
     },
     {
       index: 5, 
@@ -61,7 +61,7 @@ const contractChallengesData = [
       registeredPlayers: 20,
       winners: 10,
       expiryTime: 2,
-      isSolved: true,
+      isSolved: false,
       notPlayable: false,
     }
   ];
