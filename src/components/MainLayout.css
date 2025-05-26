@@ -1,6 +1,10 @@
 * {
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 /* Left Column */
 
 /* Left: First Section */
@@ -21,7 +25,18 @@
 
 /* Left: Second Section */
 .scoreText {
-  font-size: 20px;
+  font-size: 28px;
+}
+
+.selectedGame {
+  font-weight: bold; 
+  font-size: 13px; 
+}
+.dax {
+  color:#ba00f8; 
+  font-weight: bold; 
+  font-size: 10px; 
+  margin-right: 5px; 
 }
 
 .newGameBtn {
@@ -32,6 +47,7 @@
   border-radius: 5px;
   padding: 3px;
   cursor: pointer !important;
+  margin-bottom: 5px; 
 }
 .newGameBtn:hover {
   background-color: rgb(231, 169, 11) !important;
@@ -41,6 +57,14 @@
 .newGameBtn:active {
   background-color: rgb(91, 67, 4) !important;
   color: #fff !important;
+}
+
+.gameInfoBtn {
+  font-size: 13px; 
+  cursor: pointer !important;
+  padding: 3px;
+  border: none;
+  font-weight: bold;
 }
 
 .gameInstructions {
@@ -54,9 +78,9 @@
 
 /* Left: Third Section */
 .musicPlayer {
-  width: 90%;
+  width: 100%;
   /* border: 1px solid #000; */
-  padding: 10px;
+  padding: 0px;
 }
 .musicText {
   font-size: 14px;
@@ -66,15 +90,15 @@
 }
 
 .moreControls {
-  margin-right: 20px;
+  /* margin-right: 30px; */
   /* height: 30px; */
 }
 
 .moreControls button {
   border: 1px solid #444;
   border-radius: 15px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin: 2px;
   cursor: pointer;
 }
@@ -145,7 +169,8 @@ audio::-webkit-media-controls-time-remaining-display {
   background-color: #ffffff; 
   color: #000; 
   font-size: 12px; 
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+  /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;   */
+  font-family: "Source Code Pro", monospace;;
   padding: 5px; 
   border: 1px solid #565656; 
   border-radius: 5px; 
@@ -162,7 +187,7 @@ audio::-webkit-media-controls-time-remaining-display {
   font-size: 14px;
 }
 .gameChallenges li {
-  font-size: 12px;
+  font-size: 11px;
 }
 .gameChallenges li:hover {
   background-color: #f2eeee;
@@ -204,4 +229,12 @@ audio::-webkit-media-controls-time-remaining-display {
   .scoreField {
     color: #fff !important; 
   }
+}
+
+/* Game Info Modal */
+.gameInfo {
+  font-size: 12px;
+}
+.widerModal {
+  width: 1200px !important; 
 }

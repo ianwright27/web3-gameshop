@@ -24,7 +24,7 @@ const RightPanel = ({
         <h5 className="highestScoresText">Highest Scores</h5>
         <ul className="list-group highestScoresList">
           {highestScoresRecorded.map((highScore) => (
-            <li key={highScore.player} className="list-group-item">
+            <li key={highScore.id} className="list-group-item">
               {highScore.player} {" - "} {highScore.score}
             </li>
           ))}
@@ -54,7 +54,7 @@ const RightPanel = ({
       <div className="mb-5">
         <h5 className="challengesText">Challenges</h5>
         <ul className="list-group gameChallenges">
-          {contractChallenges.map((challenge) => (
+          {contractChallenges.slice(0, 3).map((challenge) => (
             <li
               key={challenge.index}
               className="list-group-item"

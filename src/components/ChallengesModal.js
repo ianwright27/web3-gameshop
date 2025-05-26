@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const challengesPerPage = 5;
+
+  // Calculate total pages
+  const totalPages = Math.ceil(contractChallenges.length / challengesPerPage);
+
+  // Slice challenges for current page
+  const currentChallenges = contractChallenges.slice(
+    (currentPage - 1) * challengesPerPage,
+    currentPage * challengesPerPage
+  );
+
+  // Handlers
+  const handlePrev = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
+
   return (
     <div
       className="modal fade"
@@ -41,7 +62,7 @@ const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {contractChallenges.map((c) => (
+                  {currentChallenges.map((c) => (
                     <tr
                       key={c.index}
                       className="individualContractChallenges"
@@ -50,12 +71,13 @@ const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
                       }
                       data-bs-toggle="modal"
                       data-bs-target="#challengesModal"
+                      style={{ cursor: "pointer" }}
                     >
                       <td>{c.index}</td>
                       <td>{c.creator}</td>
                       <td className="scoreField">{c.gameMintScore}</td>
                       <td>{c.gameMintPrice}ETH</td>
-                      <td>{(c.gameMintPrice / c.gameMintNumPlayers)}ETH</td>
+                      <td>{(c.gameMintPrice / c.gameMintNumPlayers).toFixed(3)}ETH</td>
                       <td>{c.gameMintNumPlayers}</td>
                       <td>{c.registeredPlayers}</td>
                       <td>{c.winners}</td>
@@ -67,11 +89,46 @@ const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
                 </tbody>
               </table>
             </div>
+
+            {/* Pagination controls - only show if more than 5 */}
+            {totalPages > 1 && (
+              <nav aria-label="Challenges pagination" className="mt-3">
+                <ul className="pagination justify-content-center">
+                  <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={handlePrev}>
+                      Previous
+                    </button>
+                  </li>
+                  {[...Array(totalPages)].map((_, idx) => {
+                    const pageNum = idx + 1;
+                    return (
+                      <li
+                        key={pageNum}
+                        className={`page-item ${
+                          currentPage === pageNum ? "active" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => setCurrentPage(pageNum)}
+                        >
+                          {pageNum}
+                        </button>
+                      </li>
+                    );
+                  })}
+                  <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={handleNext}>
+                      Next
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            )}
+
             <span>[+] Click a challenge to play! 🎮</span>
             <br />
-            <span>
-              [+] Tip: wait a few seconds for that game to load!!! 🕜
-            </span>
+            {/* <span>[+] Tip: wait a few seconds for that game to load!!! 🕜</span> */}
           </div>
         </div>
       </div>
@@ -79,4 +136,4 @@ const ChallengesModal = ({ contractChallenges, handlePlayChallenge }) => {
   );
 };
 
-export default ChallengesModal;
+export default ChallengesModal; 

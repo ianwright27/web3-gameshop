@@ -5,13 +5,14 @@ import GameControls from "./GameControls";
 import GamePanel from "./GamePanel"; 
 import RightPanel from "./RightPanel";
 import ChallengesModal from "./ChallengesModal";
+import MessageModal from "./MessageModal";
 
 import contractChallengesData from "../data/contractChallengesData";
 
 const MainLayout = () => {
   const [seed, setSeed] = useState("0");
   const [score, setScore] = useState(0);
-  const [musicPlaying, setMusicPlaying] = useState(true);
+  const [musicPlaying, setMusicPlaying] = useState(false);
   const [playingContractChallenges, setPlayingContractChallenges] = useState(false); 
   const [currentChallengePlaying, setCurrentChallengePlaying] = useState(0); 
   const [contractChallenges, setContractChallenges] = useState(contractChallengesData);
@@ -43,9 +44,9 @@ const MainLayout = () => {
 
   // fetched from mysql (ideally) 
   let highestScoresRecorded = [
-    { rank: 1, player: "anonymous", score: 5451 },
-    { rank: 1, player: "anonymous", score: 3520 },
-    { rank: 1, player: "anonymous", score: 3001 },
+    { id: 0, rank: 1, player: "anonymous", score: 5451 },
+    { id: 1, rank: 1, player: "anonymous", score: 3520 },
+    { id: 2, rank: 1, player: "anonymous", score: 3001 },
   ];
 
   /* MUSIC FUNCTIONALITIES */
@@ -92,11 +93,31 @@ const MainLayout = () => {
     if (!musicPlaying) setMusicPlaying(true); // play the music
   };
 
+  // general modal settings: title, message and relevant states 
+  const [showMessageModal, setShowMessageModal] = useState(false); 
+  const [modalTitle, setModalTitle] = useState("Warning"); 
+  const [modalMessage, setModalMessage] = useState("Oops something went wrong."); 
+  const [modalType, setModalType] = useState("info"); // info or 'tip' by default ['warning', 'error', 'info']
+
   const handlePlayChallenge = (id, seedValue) => {
     // make sure battery level is sufficient (to prevent exploits)
     if (!isBatterySufficient) {
-      alert('Your battery is low. Please charge your device to play for fair scores.');
+      // alert('Your battery is low. Please charge your device to play for fair scores.'); 
+      setShowMessageModal(true); 
+      setModalTitle("Battery Low"); 
+      setModalMessage("Please charge your device to play for fair scores."); 
+      setModalType("warning"); 
+      // alternatively (for development purposes)
+      console.log('Your battery is low. Please charge your device to play for fair scores.');
+    
       return;
+    }
+
+    if (currentChallengePlaying == id) {
+      setShowMessageModal(true); 
+      setModalTitle("Oops"); 
+      setModalMessage("Sorry, each challenge can only be chosen once."); 
+      setModalType("error"); 
     }
     setScore(0); // Reset score to zero when one begins a challenge 
     setSeed(seedValue); // Restart game with specific seed 
@@ -124,7 +145,7 @@ const MainLayout = () => {
         <div className="col-6 bg-light d-flex align-items-center justify-content-center">
           {seed === "0" && (
             <div>
-              <span>Press "New Game" to play! 🎮</span>
+              <span>Press "New" to play! 🎮</span>
             </div>
           )}
           {seed != "0" && <GamePanel
@@ -152,6 +173,14 @@ const MainLayout = () => {
         <ChallengesModal 
         contractChallenges={contractChallenges}  
         handlePlayChallenge={handlePlayChallenge}
+        />
+
+        <MessageModal 
+        title= {modalTitle} 
+        message= {modalMessage}
+        show = {showMessageModal} 
+        onClose = {() => setShowMessageModal(false)}
+        type = {modalType}
         />
 
 

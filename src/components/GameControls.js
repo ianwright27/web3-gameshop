@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactPlayer from "react-player";
 import LogoImage from "../img/sample-logo.png.jpg";
+import GameInfoModal from "./GameInfoModal";
 
 const GameControls = ({
   score,
@@ -11,6 +12,10 @@ const GameControls = ({
   handleNext,
   musicPlaying,
 }) => {
+  const [showInfoModal, setShowInfoModal] = useState(false);
+
+  const openModal = () => setShowInfoModal(true);
+  const closeModal = () => setShowInfoModal(false);
   return (
     <div className="p-2 text-center d-flex flex-column align-items-center justify-content-center">
 
@@ -22,39 +27,37 @@ const GameControls = ({
           alt="Game Logo"
           style={{ maxWidth: "100px" }}
         />
-        <h5 className="logoText">Cypher Racer</h5>
+        <h5 className="logoText">Daxam</h5>
         <p className="logoTextTagLine text-center" style={{ width: "80%" }}>
-          Bringing arcade game culture to Web3, play to earn, just like old times!
+          Where creators build worlds, and players conquer them! 🚀 
         </p>
       </div>
 
       {/* Game Controls */}
-      <div className="d-flex flex-column align-items-center justify-content-center">
+      <div className="d-flex flex-column align-items-center justify-content-center mb-5">
         <h5 className="scoreText">Score: {score}</h5>
-
+        <br></br>
+        
+        <p className="selectedGame"><span className="dax">[Dax]</span>Cypher Racer</p>
         <button
           className="newGameBtn"
-          style={{ width: "70%" }}
+          style={{ width: "100%" }}
           onClick={handleNewGame}
         >
-          New Game 🎮
+          New 🎮
         </button>
 
-        <br />
+        {/* <br /> */}
 
-        <p className="gameInstructions" style={{ width: "70%" }}>
-          <span className="underline">Instructions</span>
-          <br />
-          <strong><i>SPACEBAR</i></strong> - play/pause/try again<br />
-          <strong><i>LEFT</i></strong> - steer left <br />
-          <strong><i>RIGHT</i></strong> - steer right <br /><br />
+        {/* Replace instructions/tips with one button */}
+        <button
+          className="btn btn-info gameInfoBtn"
+          style={{ width: "100%" }}
+          onClick={openModal}
+        >
+          View Info
+        </button>
 
-          <span className="underline">Tips</span><br />
-          1. Avoid obstacles<br />
-          2. Collect the purple boxes to gain reputation<br />
-          3. Try not to go off the screen<br />
-          4. Play a challenge (bottom right) to earn real money in your MetaMask wallet 🤑💸💰
-        </p>
       </div>
 
       {/* Music Player */}
@@ -80,6 +83,8 @@ const GameControls = ({
           onEnded={handleNext}
         />
       </div>
+      {/* Game Info Modal */}
+      {showInfoModal && <GameInfoModal show={showInfoModal} onClose={closeModal} />}
     </div>
   );
 };
